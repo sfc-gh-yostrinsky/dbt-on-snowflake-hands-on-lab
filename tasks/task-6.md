@@ -26,7 +26,7 @@ Discussion:
 - What would CI do with this on every pull request?
 - What breaks if prod is stale, or if the prod run is older than 14 days (artifact retention)?
 
-Done when: only `dim_truck` and its downstream test run (measured: 2 nodes in 7 seconds).
+Done when: only `dim_truck` and its downstream test run (measured: 2 nodes in about 5 seconds).
 
 Gotcha: the prod run must come from the code you deployed for Task 5. If prod was built from older code, `state:modified` compares against that older version.
 

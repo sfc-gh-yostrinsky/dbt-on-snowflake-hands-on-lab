@@ -18,7 +18,7 @@ Discussion: timestamp vs check strategy. What does a snapshot miss if a customer
 
 Done when: the 10 changed customers each have 2 versions, one of them open until 9999-12-31.
 
-The UPDATE is meant to stay: Tasks 5 and 6 run on the changed data. To undo it later, clone the table `before (statement => '<update query id>')`, as in Task 1.
+The UPDATE is meant to stay: Tasks 5 and 6 run on the changed data. To undo it later, clone the table before the update and swap, as in Task 1.
 
 Note: the snapshot lands in schema SNAPSHOTS for every target, because of the repo's `generate_schema_name` macro.
 

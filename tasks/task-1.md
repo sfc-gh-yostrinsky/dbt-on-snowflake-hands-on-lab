@@ -10,10 +10,14 @@ What to build:
 
       insert into tasty_bytes_dbt_db.raw.order_header select * from tasty_bytes_dbt_db.raw.order_header limit 5;
 
-  The copies are identical to the originals, so a DELETE would remove both. Undo with Time Travel instead, using the query ID of the insert:
+  The copies are identical to the originals, so a DELETE would remove both. Undo with Time Travel instead. Snowflake won't replace a table with a clone of itself, so clone to a new name and swap:
 
-      create or replace table tasty_bytes_dbt_db.raw.order_header
+      create table tasty_bytes_dbt_db.raw.order_header_restore
         clone tasty_bytes_dbt_db.raw.order_header before (statement => '<insert query id>');
+      alter table tasty_bytes_dbt_db.raw.order_header swap with tasty_bytes_dbt_db.raw.order_header_restore;
+      drop table tasty_bytes_dbt_db.raw.order_header_restore;
+
+  To find the insert's query ID, run SELECT LAST_QUERY_ID(); right after the insert, or look in Query History.
 
 Deploy, then run: `build --target dev --select raw_pos_order_header`
 

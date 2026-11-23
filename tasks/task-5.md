@@ -16,6 +16,6 @@ Discussion:
 - Why is the snapshot shared by both targets, and is that what you want?
 - In a real team, who runs this command: you, or CI? See `.github/workflows` in the guide repo.
 
-Done when: the build finishes successfully for target `prod` (measured: 3m42s on SMALL) and you have its query ID.
+Done when: the build finishes successfully for target `prod` (measured: 73 of 73 in 46s on the event X-Large warehouse, 3m42s on SMALL) and you have its query ID.
 
 Answer: [answers/task-5](../answers/task-5)

@@ -41,6 +41,6 @@ Answers are in [answers/](answers/), one folder per task, holding only the files
 
        EXECUTE DBT PROJECT TASTY_BYTES_DBT_DB.INTEGRATIONS.TASTY_BYTES_DBT ARGS='build --target dev';
 
-Cost: the order tables are large (about 248M headers and 674M lines). Use `--select` to build only what you changed. A full build takes about 4 minutes on a SMALL warehouse.
+Cost: the order tables are large (about 248M headers and 674M lines). Use `--select` to build only what you changed. A full build takes under a minute on the event X-Large warehouse (about 4 minutes on SMALL).
 
 Deploy uploads your local folder. Snowflake runs what you deployed last, not what is in your editor.
