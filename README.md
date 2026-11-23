@@ -16,7 +16,7 @@ Answers are in [answers/](answers/), one folder per task, holding only the files
 
 ## Prerequisites
 
-- A Snowflake account where the quickstart setup has already run: database `TASTY_BYTES_DBT_DB` (schemas RAW, DEV, PROD, INTEGRATIONS), warehouse `TASTY_BYTES_DBT_WH`, and the external access integration `DBT_EXT_ACCESS` (needed by `dbt deps`).
+- A Snowflake event account with database `TASTY_BYTES_DBT_DB` (schemas RAW, DEV, PROD), warehouse `TASTY_BYTES_DBT_WH`, and the external access integration `DBT_ACCESS_INTEGRATION` (needed by `dbt deps`). These are already created for you.
 - CoCo Desktop with a working connection to that account.
 - The Snowflake CLI (`snow`) on your path.
 
@@ -28,9 +28,13 @@ Answers are in [answers/](answers/), one folder per task, holding only the files
        git clone https://github.com/sfc-gh-yostrinsky/dbt-on-snowflake-hands-on-lab.git
 
 2. Open `getting-started-with-dbt-on-snowflake` in CoCo Desktop. That is where you edit. This repo is your task sheet.
-3. Deploy the project as an object. Run this from the root of the guide repo, and run it again after every change:
+3. Create the schema that holds the project object. The guide's setup script normally creates it, but the event accounts don't have it:
 
-       snow dbt deploy TASTY_BYTES_DBT --source tasty_bytes_dbt_demo --database TASTY_BYTES_DBT_DB --schema INTEGRATIONS --external-access-integration DBT_EXT_ACCESS --dbt-version '2.0.0'
+       CREATE SCHEMA IF NOT EXISTS TASTY_BYTES_DBT_DB.INTEGRATIONS COMMENT = 'Holds the dbt project object for the hands-on lab';
+
+4. Deploy the project as an object. Run this from the root of the guide repo, and run it again after every change:
+
+       snow dbt deploy TASTY_BYTES_DBT --source tasty_bytes_dbt_demo --database TASTY_BYTES_DBT_DB --schema INTEGRATIONS --external-access-integration DBT_ACCESS_INTEGRATION --dbt-version '2.0.0'
 
    The first deploy fails. That is Task 0.
 4. Run dbt commands in a SQL worksheet or the CoCo chat:

@@ -1,6 +1,6 @@
 -- Task 5: ship to prod. Same project object, target prod.
 -- Deploy first (from the guide repo root):
---   snow dbt deploy TASTY_BYTES_DBT --source tasty_bytes_dbt_demo --database TASTY_BYTES_DBT_DB --schema INTEGRATIONS --external-access-integration DBT_EXT_ACCESS --dbt-version '2.0.0'
+--   snow dbt deploy TASTY_BYTES_DBT --source tasty_bytes_dbt_demo --database TASTY_BYTES_DBT_DB --schema INTEGRATIONS --external-access-integration DBT_ACCESS_INTEGRATION --dbt-version '2.0.0'
 
 EXECUTE DBT PROJECT TASTY_BYTES_DBT_DB.INTEGRATIONS.TASTY_BYTES_DBT ARGS='build --target prod';
 
