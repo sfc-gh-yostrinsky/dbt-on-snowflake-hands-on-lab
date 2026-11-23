@@ -1,0 +1,6 @@
+version: 2
+models:
+  - name: raw_pos_order_header
+    columns:
+      - name: order_id
+        data_tests: [unique, not_null]

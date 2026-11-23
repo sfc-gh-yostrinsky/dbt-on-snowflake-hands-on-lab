@@ -1,0 +1,18 @@
+version: 2
+models:
+  - name: fct_order_lines
+    columns:
+      - name: order_detail_id
+        data_tests: [unique, not_null]
+      - name: truck_sk
+        data_tests:
+          - relationships:
+              arguments: {to: ref('dim_truck'), field: truck_sk}
+      - name: menu_item_sk
+        data_tests:
+          - relationships:
+              arguments: {to: ref('dim_menu_item'), field: menu_item_sk}
+      - name: customer_sk
+        data_tests:
+          - relationships:
+              arguments: {to: ref('dim_customer'), field: customer_sk}

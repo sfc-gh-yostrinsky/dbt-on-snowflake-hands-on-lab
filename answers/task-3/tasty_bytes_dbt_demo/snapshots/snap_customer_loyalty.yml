@@ -1,0 +1,10 @@
+snapshots:
+  - name: snap_customer_loyalty
+    relation: ref('raw_customer_customer_loyalty')
+    config:
+      schema: snapshots
+      unique_key: customer_id
+      strategy: check
+      check_cols: [city, country, marital_status, children_count]
+      hard_deletes: new_record
+      dbt_valid_to_current: "to_timestamp_ntz('9999-12-31')"
